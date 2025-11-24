@@ -576,4 +576,8 @@
     <Attribute id="cls1u#att29u" key="true" name="oid" type="integer"/>
     <Attribute id="cls1u#att30u" name="attribute30" type="string"/>
   </Class>
+  <Class id="cls2u" name="Class 2" duration="persistent" attributeOrder="cls2u#att31u cls2u#att32u" gr:x="410" gr:y="60">
+    <Attribute id="cls2u#att31u" name="oid" key="true" type="integer"/>
+    <Attribute id="cls2u#att32u" name="attribute32" type="string"/>
+  </Class>
 </DomainModel>
