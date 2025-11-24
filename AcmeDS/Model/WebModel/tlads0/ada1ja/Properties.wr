@@ -1,0 +1,103 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#ada1ja" name="Generate Words" defaultSuccessPortDefinition="tlads0#ada1ja#spd3ja" defaultErrorPortDefinition="tlads0#ada1ja#epd3ja">
+  <InputPortDefinition id="tlads0#ada1ja#ipd3ja" gr:x="0" gr:y="30" type="string">
+    <SuccessFlow id="tlads0#ada1ja#ipd3ja#sf5ja" to="tlads0#ada1ja#scu2ja">
+      <ParameterBinding id="tlads0#ada1ja#ipd3ja#sf5ja#par5ja" source="tlads0#ada1ja#ipd3ja#pdp14ja" target="tlads0#ada1ja#scu2ja.sort" name="sort - sort"/>
+      <ParameterBinding id="tlads0#ada1ja#ipd3ja#sf5ja#par18ja" source="tlads0#ada1ja#ipd3ja#pdp16ja" target="tlads0#ada1ja#scu2ja.page" name="page - page"/>
+      <ParameterBinding id="tlads0#ada1ja#ipd3ja#sf5ja#par19ja" source="tlads0#ada1ja#ipd3ja#pdp17ja" target="tlads0#ada1ja#scu2ja.pageSize" name="pageSize - pageSize"/>
+      <ParameterBinding id="tlads0#ada1ja#ipd3ja#sf5ja#par3ja" source="tlads0#ada1ja#ipd3ja#pdp18ja" target="tlads0#ada1ja#scu2ja.prefix" name="wordPrefix - prefix"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="tlads0#ada1ja#ipd3ja#pdp14ja" name="sort" type="string"/>
+    <PortDefinitionParameter id="tlads0#ada1ja#ipd3ja#pdp16ja" name="page" type="string"/>
+    <PortDefinitionParameter id="tlads0#ada1ja#ipd3ja#pdp17ja" name="pageSize" type="string"/>
+    <PortDefinitionParameter id="tlads0#ada1ja#ipd3ja#pdp18ja" name="wordPrefix" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#ada1ja#spd3ja" name="Success Port" gr:x="0" gr:y="30" type="string">
+    <PortDefinitionParameter id="tlads0#ada1ja#spd3ja#pdp12ja" name="index" type="integer"/>
+    <PortDefinitionParameter id="tlads0#ada1ja#spd3ja#pdp13ja" name="word" type="string"/>
+    <PortDefinitionParameter id="tlads0#ada1ja#spd3ja#pdp15ja" name="totalCount" type="string"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#ada1ja#epd3ja" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Script id="tlads0#ada1ja#scu2ja" name="Generate Words" gr:x="335" gr:y="90">
+      <ScriptText xml:space="preserve">#input String prefix
+#input Integer page
+#input Integer pageSize
+#input String sort
+
+#output Integer[] index
+#output String[] word
+#output Integer totalCount
+
+def TEXT = """\
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lorem vel ultricies porta.
+Aenean pharetra aliquam enim id interdum. Aliquam feugiat tellus id nunc blandit lacinia. Donec
+eleifend sagittis ultrices. Maecenas in ipsum et diam malesuada venenatis vel quis est.
+Phasellus libero nunc, suscipit id finibus eu, posuere sit amet ex. Proin augue mi, ultrices non
+purus at, bibendum pretium tellus. Cras a mollis dolor, et pretium eros. Nunc consequat et purus
+a tincidunt. Nam consequat augue sit amet nisi interdum, vel pretium orci egestas. Aliquam quis
+orci volutpat, laoreet ex eu, dapibus est. Maecenas nibh ipsum, dignissim at eleifend tincidunt,
+luctus lacinia lacus. 
+"""
+
+def elements = []
+TEXT.split("\\s+").each { word -&gt;
+	if (prefix == null || word.startsWith(prefix)) {
+    	elements.add(["index": elements.size(), "word": word])
+    }
+}
+
+if (sort) {
+	def sortCriteria = sort.split(",")
+	elements.sort { e1, e2 -&gt;
+		for (sortCriterium in sortCriteria) {
+			def reverse, key
+			if (sortCriterium.startsWith("-")) {
+				reverse = true
+				key = sortCriterium.substring(1)
+			} else {
+				reverse = false
+				key = sortCriterium
+			}
+			def keyCmp = e1[key].compareTo(e2[key])
+			if (keyCmp != 0) {
+				return keyCmp * (reverse ? -1 : 1)
+			}
+		}
+		return 0
+	}
+} else {
+	Collections.shuffle(elements, new Random(279631285282147))
+}
+
+def skip = page &amp;&amp; pageSize ? (page - 1) * pageSize : 0
+def take = page &amp;&amp; pageSize ? pageSize : Integer.MAX_VALUE
+
+def output = ["totalCount": elements.size], pickIndex = 0
+for (element in elements) {
+    if (skip &lt;= 0) {
+    	if (take &gt; 0) {
+    		element.keySet().each { key -&gt;
+       			def keyValues = output[key]
+        		if (!keyValues) {
+            		output[key] = keyValues = []
+	        	}
+        		keyValues.add(element[key])
+    		}
+    		take--
+    	} else {
+    		break
+    	}
+    } else {
+    	skip--
+    }
+}
+
+return output</ScriptText>
+      <SuccessFlow id="tlads0#ada1ja#scu2ja#sf6ja" to="tlads0#ada1ja#spd3ja">
+        <ParameterBinding id="tlads0#ada1ja#scu2ja#sf6ja#par6ja" source="result(index)" target="tlads0#ada1ja#spd3ja#pdp12ja" name="index - index"/>
+        <ParameterBinding id="tlads0#ada1ja#scu2ja#sf6ja#par7ja" source="result(word)" target="tlads0#ada1ja#spd3ja#pdp13ja" name="word - word"/>
+        <ParameterBinding id="tlads0#ada1ja#scu2ja#sf6ja#par16ja" source="result(totalCount)" target="tlads0#ada1ja#spd3ja#pdp15ja" name="totalCount - totalCount"/>
+      </SuccessFlow>
+    </Script>
+  </Operations>
+</ActionDefinition>

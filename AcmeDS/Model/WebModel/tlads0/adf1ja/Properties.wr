@@ -1,0 +1,25 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#adf1ja" name="Chatter" type="read" defaultSuccessPortDefinition="tlads0#adf1ja#spd1ja" defaultErrorPortDefinition="tlads0#adf1ja#epd1ja">
+  <InputPortDefinition id="tlads0#adf1ja#ipd1ja" gr:x="0" gr:y="30" type="string">
+    <SuccessFlow id="tlads0#adf1ja#ipd1ja#sf7ja" to="tlads0#adf1ja#act2ja">
+      <ParameterBinding id="tlads0#adf1ja#ipd1ja#sf7ja#par1ja" source="tlads0#adf1ja#ipd1ja#pdp19ja" target="tlads0#adf1ja#act2ja.tlads0#ada1ja#ipd3ja#pdp18ja" name="wordPrefix - wordPrefix"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="tlads0#adf1ja#ipd1ja#pdp19ja" name="wordPrefix" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#adf1ja#spd1ja" name="Success Port" gr:x="0" gr:y="30" type="string">
+    <PortDefinitionParameter id="tlads0#adf1ja#spd1ja#pdp1ja" name="index" type="integer" key="true"/>
+    <PortDefinitionParameter id="tlads0#adf1ja#spd1ja#pdp2ja" name="word" type="string"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#adf1ja#epd1ja" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations/>
+  <Action id="tlads0#adf1ja#act2ja" gr:x="300" gr:y="115" definition="tlads0#ada1ja">
+    <Events>
+      <SuccessEvent id="tlads0#adf1ja#act2ja#scce2ja" definition="tlads0#ada1ja#spd3ja">
+        <SuccessFlow id="tlads0#adf1ja#act2ja#scce2ja#sf8ja" to="tlads0#adf1ja#spd1ja">
+          <ParameterBinding id="tlads0#adf1ja#act2ja#scce2ja#sf8ja#par8ja" source="tlads0#ada1ja#spd3ja#pdp12ja" target="tlads0#adf1ja#spd1ja#pdp1ja" name="index - index"/>
+          <ParameterBinding id="tlads0#adf1ja#act2ja#scce2ja#sf8ja#par9ja" source="tlads0#ada1ja#spd3ja#pdp13ja" target="tlads0#adf1ja#spd1ja#pdp2ja" name="word - word"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="tlads0#adf1ja#act2ja#erre2ja" definition="tlads0#ada1ja#epd3ja"/>
+    </Events>
+  </Action>
+</ActionDefinition>

@@ -1,0 +1,25 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#adf3ja" name="One Word" type="read" defaultSuccessPortDefinition="tlads0#adf3ja#spd4ja" defaultErrorPortDefinition="tlads0#adf3ja#epd4ja">
+  <InputPortDefinition id="tlads0#adf3ja#ipd4ja" gr:x="0" gr:y="30" type="string">
+    <PortDefinitionParameter id="tlads0#adf3ja#ipd4ja#pdp21ja" name="enabled" type="boolean"/>
+    <SuccessFlow id="tlads0#adf3ja#ipd4ja#sf1ja" to="tlads0#adf3ja#switch1ja">
+      <ParameterBinding id="tlads0#adf3ja#ipd4ja#sf1ja#par22ja" source="tlads0#adf3ja#ipd4ja#pdp21ja" target="tlads0#adf3ja#switch1ja.switch" name="enabled - Switch"/>
+    </SuccessFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#adf3ja#spd4ja" name="Success Port" gr:x="0" gr:y="30" type="string">
+    <PortDefinitionParameter id="tlads0#adf3ja#spd4ja#pdp31ja" name="oid" type="integer" key="true"/>
+    <PortDefinitionParameter id="tlads0#adf3ja#spd4ja#pdp22ja" name="word" type="string"/>
+    <PortDefinitionParameter id="tlads0#adf3ja#spd4ja#pdp32ja" name="wordIndex" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#adf3ja#epd4ja" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Switch gr:x="345" gr:y="25" id="tlads0#adf3ja#switch1ja" name="Enabled?">
+      <SuccessFlow id="tlads0#adf3ja#switch1ja#sf2ja" to="tlads0#adf3ja#spd4ja"/>
+      <SuccessFlow id="tlads0#adf3ja#switch1ja#sf3ja" to="tlads0#adf3ja#spd4ja" code="true">
+        <ParameterBinding id="tlads0#adf3ja#switch1ja#sf3ja#par4ja" sourceValue="Lorem" target="tlads0#adf3ja#spd4ja#pdp22ja" name="&quot;Lorem&quot; - word"/>
+        <ParameterBinding id="tlads0#adf3ja#switch1ja#sf3ja#par25ja" sourceValue="1" target="tlads0#adf3ja#spd4ja#pdp31ja" name="&quot;1&quot; - oid [integer]"/>
+        <ParameterBinding id="tlads0#adf3ja#switch1ja#sf3ja#par26ja" sourceValue="0" target="tlads0#adf3ja#spd4ja#pdp32ja" name="&quot;0&quot; - wordIndex [integer]"/>
+      </SuccessFlow>
+      <Case value="true"/>
+    </Switch>
+  </Operations>
+</ActionDefinition>

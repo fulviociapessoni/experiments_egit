@@ -1,0 +1,21 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#ad2ja" name="Remote Delete" defaultSuccessPortDefinition="tlads0#ad2ja#spd8ja" defaultErrorPortDefinition="tlads0#ad2ja#epd8ja">
+  <InputPortDefinition id="tlads0#ad2ja#ipd8ja" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="tlads0#ad2ja#ipd8ja#pdp29ja" name="input" type="string"/>
+    <DataFlow id="tlads0#ad2ja#ipd8ja#df4ja" to="tlads0#ad2ja#spd8ja">
+      <ParameterBinding id="tlads0#ad2ja#ipd8ja#df4ja#par33ja" name="input - output" source="tlads0#ad2ja#ipd8ja#pdp29ja" target="tlads0#ad2ja#spd8ja#pdp30ja"/>
+    </DataFlow>
+    <SuccessFlow id="tlads0#ad2ja#ipd8ja#sf14ja" to="tlads0#ad2ja#switch2ja">
+      <ParameterBinding id="tlads0#ad2ja#ipd8ja#sf14ja#par34ja" source="tlads0#ad2ja#ipd8ja#pdp29ja" target="tlads0#ad2ja#switch2ja.switch" name="input - Switch"/>
+    </SuccessFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#ad2ja#spd8ja" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="tlads0#ad2ja#spd8ja#pdp30ja" name="output" type="string"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#ad2ja#epd8ja" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Switch gr:x="340" gr:y="165" id="tlads0#ad2ja#switch2ja" name="Is EMPTY?">
+      <SuccessFlow id="tlads0#ad2ja#switch2ja#sf15ja" to="tlads0#ad2ja#spd8ja" automaticCoupling="true"/>
+      <SuccessFlow id="tlads0#ad2ja#switch2ja#sf17ja" to="tlads0#ad2ja#epd8ja" automaticCoupling="true" code="&lt;EMPTY&gt;"/>
+    </Switch>
+  </Operations>
+</ActionDefinition>

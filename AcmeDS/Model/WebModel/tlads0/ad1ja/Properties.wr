@@ -1,0 +1,13 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#ad1ja" name="Remote Update" defaultSuccessPortDefinition="tlads0#ad1ja#spd7ja" defaultErrorPortDefinition="tlads0#ad1ja#epd7ja">
+  <InputPortDefinition id="tlads0#ad1ja#ipd7ja" gr:x="0" gr:y="30">
+    <SuccessFlow id="tlads0#ad1ja#ipd7ja#sf12ja" to="tlads0#ad1ja#spd7ja">
+      <ParameterBinding id="tlads0#ad1ja#ipd7ja#sf12ja#par28ja" source="tlads0#ad1ja#ipd7ja#pdp27ja" target="tlads0#ad1ja#spd7ja#pdp28ja" name="input - output"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="tlads0#ad1ja#ipd7ja#pdp27ja" name="input" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#ad1ja#spd7ja" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="tlads0#ad1ja#spd7ja#pdp28ja" name="output" type="string"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#ad1ja#epd7ja" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations/>
+</ActionDefinition>

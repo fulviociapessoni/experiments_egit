@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?webml version="9.3.0.4"?>
+
+<WebProject xmlns:db="http://www.webratio.com/2006/WebML/Database" xmlns:gr="http://www.webratio.com/2006/WebML/Graph" outputPath="${webapps_loc}/AcmeDS" gr:showUnitContent="true" gr:showTooltip="true" enableProjectDependencies="true" db:dataServicesTablePrefix="WR_" wsEnableRestSummaryPage="true" toolVersion="9.3.1" httpPort="9080" httpsPort="9080">
+  <ServiceDataProviders>
+    <IdentityProvider/>
+  </ServiceDataProviders>
+  <Roles>
+    <Role id="anonymous_user" name="Anonymous User"/>
+    <Role id="rl1" name="Role 1"/>
+    <Role id="rl2" name="managers"/>
+    <Role id="rl3" name="customers"/>
+    <Role id="rl1ja" name="adm"/>
+  </Roles>
+  <Property id="testprop4836" name="DefaultServerLogLevel" value="DEBUG"/>
+</WebProject>

@@ -1,0 +1,57 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#ada3ja" name="Process Text Document" defaultSuccessPortDefinition="tlads0#ada3ja#spd9ja" defaultErrorPortDefinition="tlads0#ada3ja#epd9ja">
+  <InputPortDefinition id="tlads0#ada3ja#ipd9ja" gr:x="0" gr:y="120">
+    <PortDefinitionParameter id="tlads0#ada3ja#ipd9ja#pdp33ja" name="textDocument" type="blob"/>
+    <SuccessFlow id="tlads0#ada3ja#ipd9ja#sf16ja" to="tlads0#ada3ja#scu1ja">
+      <ParameterBinding id="tlads0#ada3ja#ipd9ja#sf16ja#par29ja" source="tlads0#ada3ja#ipd9ja#pdp33ja" target="tlads0#ada3ja#scu1ja.textDecoument" name="textDocument [blob] - textDecoument"/>
+    </SuccessFlow>
+    <DataFlow id="tlads0#ada3ja#ipd9ja#df2ja" to="tlads0#ada3ja#scu3ja">
+      <ParameterBinding id="tlads0#ada3ja#ipd9ja#df2ja#par30ja" source="tlads0#ada3ja#ipd9ja#pdp33ja" target="tlads0#ada3ja#scu3ja.textDecoument" name="textDocument [blob] - textDecoument"/>
+    </DataFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#ada3ja#spd9ja" name="Success Port" gr:x="0" gr:y="115">
+    <PortDefinitionParameter id="tlads0#ada3ja#spd9ja#pdp34ja" name="joinedText" type="string"/>
+    <PortDefinitionParameter id="tlads0#ada3ja#spd9ja#pdp35ja" name="length" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#ada3ja#epd9ja" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Script gr:x="340" gr:y="205" id="tlads0#ada3ja#scu1ja" name="Read contents">
+      <ScriptText xml:space="preserve">#input Blob textDecoument
+#output String joinedText
+
+import java.io.InputStreamReader
+import java.io.BufferedReader
+
+def textLines = []
+try (def in = textDecoument.getInputStream()) {
+	def bufReader = new BufferedReader(new InputStreamReader(in))
+	def line
+	while (null != (line = bufReader.readLine())) {
+		textLines.add(line)
+	}
+}
+def joinedText = textLines.join(",")
+
+return [joinedText: joinedText]</ScriptText>
+      <SuccessFlow id="tlads0#ada3ja#scu1ja#sf18ja" to="tlads0#ada3ja#scu3ja" automaticCoupling="true"/>
+      <DataFlow id="tlads0#ada3ja#scu1ja#df3ja" to="tlads0#ada3ja#spd9ja">
+        <ParameterBinding id="tlads0#ada3ja#scu1ja#df3ja#par32ja" source="result(joinedText)" target="tlads0#ada3ja#spd9ja#pdp34ja" name="text - text [string]"/>
+      </DataFlow>
+    </Script>
+    <Script gr:x="400" gr:y="30" id="tlads0#ada3ja#scu3ja" name="Read Length">
+      <ScriptText xml:space="preserve">#input Blob textDecoument
+#output Integer length
+
+def length = 0
+try (def in = textDecoument.getInputStream()) {
+	while (in.read() &gt;= 0) {
+		length++;
+	}
+}
+
+return [length: length]</ScriptText>
+      <SuccessFlow id="tlads0#ada3ja#scu3ja#sf19ja" to="tlads0#ada3ja#spd9ja">
+        <ParameterBinding id="tlads0#ada3ja#scu3ja#sf19ja#par31ja" source="result(length)" target="tlads0#ada3ja#spd9ja#pdp35ja" name="length - length [integer]"/>
+      </SuccessFlow>
+    </Script>
+  </Operations>
+</ActionDefinition>

@@ -1,0 +1,23 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#adf1jd" name="Remote Read File" type="read" defaultSuccessPortDefinition="tlads0#adf1jd#spd1jd" defaultErrorPortDefinition="tlads0#adf1jd#epd1jd">
+  <InputPortDefinition id="tlads0#adf1jd#ipd1jd" gr:x="0" gr:y="30">
+    <SuccessFlow id="tlads0#adf1jd#ipd1jd#sf3jd" to="tlads0#adf1jd#seu1jd">
+      <ParameterBinding id="tlads0#adf1jd#ipd1jd#sf3jd#par1jd" sourceValue="1" target="tlads0#adf1jd#seu1jd#sc1jd#kcond1jd.pkg1#ent7#att35" name="&quot;1&quot; - KeyCondition1 [oid]"/>
+    </SuccessFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#adf1jd#spd1jd" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="tlads0#adf1jd#spd1jd#pdp2jd" name="file" type="blob"/>
+    <PortDefinitionParameter id="tlads0#adf1jd#spd1jd#pdp1jd" name="oid" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#adf1jd#epd1jd" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="395" gr:y="105" id="tlads0#adf1jd#seu1jd" dataBinding="pkg1#ent7" distinctAttributes="pkg1#ent7#att35 pkg1#ent7#att37">
+      <SuccessFlow id="tlads0#adf1jd#seu1jd#sf4jd" to="tlads0#adf1jd#spd1jd">
+        <ParameterBinding id="tlads0#adf1jd#seu1jd#sf4jd#par2jd" source="pkg1#ent7#att37Array" target="tlads0#adf1jd#spd1jd#pdp2jd" name="picture - file"/>
+        <ParameterBinding id="tlads0#adf1jd#seu1jd#sf4jd#par3jd" source="pkg1#ent7#att35Array" target="tlads0#adf1jd#spd1jd#pdp1jd" name="oid - oid"/>
+      </SuccessFlow>
+      <ConditionalExpression id="tlads0#adf1jd#seu1jd#sc1jd" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="tlads0#adf1jd#seu1jd#sc1jd#kcond1jd" name="KeyCondition1" predicate="in" implied="false"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>

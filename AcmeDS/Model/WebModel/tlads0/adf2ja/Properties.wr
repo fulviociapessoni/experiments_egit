@@ -1,0 +1,41 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#adf2ja" name="Chatter Paginated" type="read" defaultSuccessPortDefinition="tlads0#adf2ja#spd2ja" defaultErrorPortDefinition="tlads0#adf2ja#epd2ja" paginated="true">
+  <InputPortDefinition id="tlads0#adf2ja#ipd2ja" gr:x="0" gr:y="30" type="string">
+    <PortDefinitionParameter id="tlads0#adf2ja#ipd2ja#pdp5ja" name="Page" specialBehavior="paginatedPage" type="integer"/>
+    <PortDefinitionParameter id="tlads0#adf2ja#ipd2ja#pdp6ja" name="Page Size" specialBehavior="paginatedPageSize" type="integer"/>
+    <PortDefinitionParameter id="tlads0#adf2ja#ipd2ja#pdp7ja" name="Sort" specialBehavior="paginatedSort" type="string"/>
+    <SuccessFlow id="tlads0#adf2ja#ipd2ja#sf9ja" to="tlads0#adf2ja#act3ja">
+      <ParameterBinding id="tlads0#adf2ja#ipd2ja#sf9ja#par15ja" source="tlads0#adf2ja#ipd2ja#pdp7ja" target="tlads0#adf2ja#act3ja.tlads0#ada1ja#ipd3ja#pdp14ja" name="Sort - sort"/>
+      <ParameterBinding id="tlads0#adf2ja#ipd2ja#sf9ja#par20ja" source="tlads0#adf2ja#ipd2ja#pdp5ja" target="tlads0#adf2ja#act3ja.tlads0#ada1ja#ipd3ja#pdp16ja" name="Page - page"/>
+      <ParameterBinding id="tlads0#adf2ja#ipd2ja#sf9ja#par21ja" source="tlads0#adf2ja#ipd2ja#pdp6ja" target="tlads0#adf2ja#act3ja.tlads0#ada1ja#ipd3ja#pdp17ja" name="Page Size - pageSize"/>
+      <ParameterBinding id="tlads0#adf2ja#ipd2ja#sf9ja#par2ja" source="tlads0#adf2ja#ipd2ja#pdp20ja" target="tlads0#adf2ja#act3ja.tlads0#ada1ja#ipd3ja#pdp18ja" name="wordPrefix - wordPrefix"/>
+    </SuccessFlow>
+    <DataFlow id="tlads0#adf2ja#ipd2ja#df1ja" to="tlads0#adf2ja#spd2ja">
+      <ParameterBinding id="tlads0#adf2ja#ipd2ja#df1ja#par12ja" source="tlads0#adf2ja#ipd2ja#pdp5ja" target="tlads0#adf2ja#spd2ja#pdp8ja" name="Page - Page"/>
+      <ParameterBinding id="tlads0#adf2ja#ipd2ja#df1ja#par13ja" source="tlads0#adf2ja#ipd2ja#pdp6ja" target="tlads0#adf2ja#spd2ja#pdp9ja" name="Page Size - Page Size"/>
+      <ParameterBinding id="tlads0#adf2ja#ipd2ja#df1ja#par14ja" source="tlads0#adf2ja#ipd2ja#pdp7ja" target="tlads0#adf2ja#spd2ja#pdp10ja" name="Sort - Sort"/>
+    </DataFlow>
+    <PortDefinitionParameter id="tlads0#adf2ja#ipd2ja#pdp20ja" name="wordPrefix" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#adf2ja#spd2ja" name="Success Port" gr:x="0" gr:y="30" type="string">
+    <PortDefinitionParameter id="tlads0#adf2ja#spd2ja#pdp3ja" name="index" type="integer" key="true"/>
+    <PortDefinitionParameter id="tlads0#adf2ja#spd2ja#pdp4ja" name="word" type="string"/>
+    <PortDefinitionParameter id="tlads0#adf2ja#spd2ja#pdp8ja" name="Page" specialBehavior="paginatedPage" type="integer"/>
+    <PortDefinitionParameter id="tlads0#adf2ja#spd2ja#pdp9ja" name="Page Size" specialBehavior="paginatedPageSize" type="integer"/>
+    <PortDefinitionParameter id="tlads0#adf2ja#spd2ja#pdp10ja" name="Sort" specialBehavior="paginatedSort" type="string"/>
+    <PortDefinitionParameter id="tlads0#adf2ja#spd2ja#pdp11ja" name="Total Count" specialBehavior="paginatedTotalCount" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#adf2ja#epd2ja" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations/>
+  <Action id="tlads0#adf2ja#act3ja" gr:x="295" gr:y="145" definition="tlads0#ada1ja">
+    <Events>
+      <SuccessEvent id="tlads0#adf2ja#act3ja#scce3ja" definition="tlads0#ada1ja#spd3ja">
+        <SuccessFlow id="tlads0#adf2ja#act3ja#scce3ja#sf10ja" to="tlads0#adf2ja#spd2ja">
+          <ParameterBinding id="tlads0#adf2ja#act3ja#scce3ja#sf10ja#par10ja" source="tlads0#ada1ja#spd3ja#pdp12ja" target="tlads0#adf2ja#spd2ja#pdp3ja" name="index - index"/>
+          <ParameterBinding id="tlads0#adf2ja#act3ja#scce3ja#sf10ja#par11ja" source="tlads0#ada1ja#spd3ja#pdp13ja" target="tlads0#adf2ja#spd2ja#pdp4ja" name="word - word"/>
+          <ParameterBinding id="tlads0#adf2ja#act3ja#scce3ja#sf10ja#par17ja" source="tlads0#ada1ja#spd3ja#pdp15ja" target="tlads0#adf2ja#spd2ja#pdp11ja" name="totalCount - Total Count"/>
+        </SuccessFlow>
+      </SuccessEvent>
+      <ErrorEvent id="tlads0#adf2ja#act3ja#erre3ja" definition="tlads0#ada1ja#epd3ja"/>
+    </Events>
+  </Action>
+</ActionDefinition>

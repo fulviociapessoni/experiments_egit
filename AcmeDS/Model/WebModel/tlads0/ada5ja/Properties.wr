@@ -1,0 +1,26 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#ada5ja" name="Search Products" defaultSuccessPortDefinition="tlads0#ada5ja#spd11ja" defaultErrorPortDefinition="tlads0#ada5ja#epd11ja">
+  <InputPortDefinition id="tlads0#ada5ja#ipd11ja" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="tlads0#ada5ja#ipd11ja#pdp39ja" name="name" array="false" type="string"/>
+    <PortDefinitionParameter id="tlads0#ada5ja#ipd11ja#pdp40ja" name="highlighted" array="false" type="boolean"/>
+    <SuccessFlow id="tlads0#ada5ja#ipd11ja#sf22ja" to="tlads0#ada5ja#seu1ja">
+      <ParameterBinding id="tlads0#ada5ja#ipd11ja#sf22ja#par36ja" source="tlads0#ada5ja#ipd11ja#pdp40ja" target="tlads0#ada5ja#seu1ja#sc1ja#acond1ja" name="highlighted - highlighted"/>
+      <ParameterBinding id="tlads0#ada5ja#ipd11ja#sf22ja#par37ja" source="tlads0#ada5ja#ipd11ja#pdp39ja" target="tlads0#ada5ja#seu1ja#sc1ja#acond2ja" name="name - name"/>
+    </SuccessFlow>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#ada5ja#spd11ja" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="tlads0#ada5ja#spd11ja#pdp42ja" name="oid" array="true" type="integer"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#ada5ja#epd11ja" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations>
+    <Selector gr:x="380" gr:y="105" id="tlads0#ada5ja#seu1ja" dataBinding="pkg1#ent8">
+      <SuccessFlow id="tlads0#ada5ja#seu1ja#sf23ja" to="tlads0#ada5ja#spd11ja">
+        <ParameterBinding id="tlads0#ada5ja#seu1ja#sf23ja#par35ja" source="pkg1#ent8#att38Array" target="tlads0#ada5ja#spd11ja#pdp42ja" name="oid - oid"/>
+      </SuccessFlow>
+      <ErrorFlow id="tlads0#ada5ja#seu1ja#ef2ja" to="tlads0#ada5ja#epd11ja" automaticCoupling="true"/>
+      <ConditionalExpression id="tlads0#ada5ja#seu1ja#sc1ja" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="tlads0#ada5ja#seu1ja#sc1ja#acond1ja" name="highlighted" predicate="eq" booleanOperator="or" implied="false" attributes="pkg1#ent8#att44"/>
+        <AttributesCondition id="tlads0#ada5ja#seu1ja#sc1ja#acond2ja" name="name" predicate="contains" booleanOperator="or" implied="false" attributes="pkg1#ent8#att41" ignoreCase="true"/>
+      </ConditionalExpression>
+    </Selector>
+  </Operations>
+</ActionDefinition>

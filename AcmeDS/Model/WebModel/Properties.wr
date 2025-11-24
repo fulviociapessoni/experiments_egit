@@ -1,0 +1,5 @@
+<WebModel defaultLocale="lcl1" edtLvl="Enterprise Platform # 20251124" edtLvlCtrl="RW50ZXJwcmlzZSBQbGF0Zm9ybSAjIDIwMjUxMTI0">
+  <Locale id="lcl1" language="en">
+    <PatternConfiguration type="sbt1" maxDecimal="3" minDecimal="0" minInteger="1" useThousandSeparator="true"/>
+  </Locale>
+</WebModel>

@@ -1,0 +1,19 @@
+<ActionDefinition xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="tlads0#ada4ja" name="Remote Upload File" defaultSuccessPortDefinition="tlads0#ada4ja#spd10ja" defaultErrorPortDefinition="tlads0#ada4ja#epd10ja">
+  <InputPortDefinition id="tlads0#ada4ja#ipd10ja" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="tlads0#ada4ja#ipd10ja#pdp36ja" name="file" array="false" type="blob"/>
+    <PortDefinitionParameter id="tlads0#ada4ja#ipd10ja#pdp37ja" name="number" array="false" type="integer"/>
+    <SuccessFlow id="tlads0#ada4ja#ipd10ja#sf13ja" to="tlads0#ada4ja#spd10ja">
+      <ParameterBinding id="tlads0#ada4ja#ipd10ja#sf13ja#par27ja" source="tlads0#ada4ja#ipd10ja#pdp37ja" target="tlads0#ada4ja#spd10ja#pdp38ja" name="number - number"/>
+      <ParameterBinding id="tlads0#ada4ja#ipd10ja#sf13ja#par1jb" source="tlads0#ada4ja#ipd10ja#pdp2jb" target="tlads0#ada4ja#spd10ja#pdp5jb" name="Price - decimal"/>
+      <ParameterBinding id="tlads0#ada4ja#ipd10ja#sf13ja#par2jb" source="tlads0#ada4ja#ipd10ja#pdp3jb" target="tlads0#ada4ja#spd10ja#pdp6jb" name="strings - strings"/>
+      <ParameterBinding id="tlads0#ada4ja#ipd10ja#sf13ja#par3jb" source="tlads0#ada4ja#ipd10ja#pdp1jb" target="tlads0#ada4ja#spd10ja#pdp4jb" name="timestamp - timestamp"/>
+    </SuccessFlow>
+    <PortDefinitionParameter id="tlads0#ada4ja#ipd10ja#pdp3jb" name="categories" array="true" type="string"/>
+  </InputPortDefinition>
+  <SuccessPortDefinition id="tlads0#ada4ja#spd10ja" name="Success Port" gr:x="0" gr:y="30">
+    <PortDefinitionParameter id="tlads0#ada4ja#spd10ja#pdp38ja" name="number" array="false" type="integer"/>
+    <PortDefinitionParameter id="tlads0#ada4ja#spd10ja#pdp6jb" name="categories" type="string"/>
+  </SuccessPortDefinition>
+  <ErrorPortDefinition id="tlads0#ada4ja#epd10ja" name="Error Port" gr:x="0" gr:y="300"/>
+  <Operations/>
+</ActionDefinition>
