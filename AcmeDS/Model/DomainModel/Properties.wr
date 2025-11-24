@@ -572,4 +572,8 @@
       <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_redirectUri_delete$errorMessage" location="body" cardinality="1" type="string"/>
     </srs:AuthService>
   </srs:Resources>
+  <Class id="cls1u" name="Class 1" duration="persistent" gr:x="425" gr:y="80" attributeOrder="cls1u#att29u cls1u#att30u">
+    <Attribute id="cls1u#att29u" key="true" name="oid" type="integer"/>
+    <Attribute id="cls1u#att30u" name="attribute30" type="string"/>
+  </Class>
 </DomainModel>
