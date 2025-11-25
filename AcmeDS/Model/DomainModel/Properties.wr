@@ -60,7 +60,7 @@
     <Attribute id="User#att33" name="birth date" type="date" db:column="birth_date"/>
     <Attribute id="User#att34" name="shipping address" type="string" db:column="shipping_address"/>
     <Attribute id="User#att9" name="full name" type="string" derivationQuery="calculated::Self.User#att30 || ' ' || Self.User#att31" db:table="user_full_name_view" storageType="file" db:column="der_attr">
-      <db:JoinColumn attribute="userName" name="oid"/>
+      <db:JoinColumn attribute="userName" name="user_id"/>
     </Attribute>
     <Attribute id="User#att1ja" name="createdAt" type="timestamp" specialBehavior="createTimestamp" db:column="createdat"/>
     <Attribute id="User#att2ja" name="updatedAt" type="timestamp" specialBehavior="updateTimestamp" db:column="updatedat"/>
@@ -120,7 +120,8 @@
       <db:JoinColumn attribute="pkg1#ent1#att1" name="category_oid"/>
     </AssociationRole2>
   </Association>
-  <db:Database id="db1" url="jdbc:mysql://localhost:3307/WRTest?serverTimezone=Europe/Rome" username="WRTestUser" password="WRTestPassword" name="AcmeDB" sampleURL="jdbc:mysql://host:port/database" type="MySQL 5"/>
+  <db:Database id="db1" url="jdbc:mysql://localhost:3306/AcmeDB?serverTimezone=Europe/Rome" username="root" password="root" name="AcmeDB" sampleURL="jdbc:mysql://host:port/database" type="MySQL 5">
+  </db:Database>
   <Package id="pkg1" name="Product" gr:x="-245" gr:y="195" gr:colorOnlyOnEntity="false" gr:hide="false">
     <Class id="pkg1#ent7" name="Image" duration="persistent" gr:x="220" gr:y="465" attributeOrder="pkg1#ent7#att35 pkg1#ent7#att36 pkg1#ent7#att37 pkg1#ent7#att12 pkg1#ent7#att17" gr:hideAttributes="false" db:database="db1" db:table="image">
       <Attribute name="oid" id="pkg1#ent7#att35" type="integer" key="true" db:column="oid"/>
@@ -572,12 +573,19 @@
       <srs:AuthServiceError name="Error Message" serverProperty="error-message" ref="_redirectUri_delete$errorMessage" location="body" cardinality="1" type="string"/>
     </srs:AuthService>
   </srs:Resources>
-  <Class id="cls1u" name="Class 1" duration="persistent" gr:x="425" gr:y="80" attributeOrder="cls1u#att29u cls1u#att30u">
-    <Attribute id="cls1u#att29u" key="true" name="oid" type="integer"/>
-    <Attribute id="cls1u#att30u" name="attribute30" type="string"/>
+  <Class id="cls1u" name="Class 1" duration="persistent" gr:x="425" gr:y="80" attributeOrder="cls1u#att29u cls1u#att30u" db:database="db1" db:table="class_1">
+    <Attribute id="cls1u#att29u" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls1u#att30u" name="attribute30" type="string" db:column="attribute30"/>
   </Class>
-  <Class id="cls2u" name="Class 2" duration="persistent" attributeOrder="cls2u#att31u cls2u#att32u" gr:x="410" gr:y="60">
-    <Attribute id="cls2u#att31u" name="oid" key="true" type="integer"/>
-    <Attribute id="cls2u#att32u" name="attribute32" type="string"/>
+  <Class id="cls2u" name="Class 2" duration="persistent" attributeOrder="cls2u#att31u cls2u#att32u" gr:x="410" gr:y="60" db:database="db1" db:table="class_2">
+    <Attribute id="cls2u#att31u" name="oid" key="true" type="integer" db:column="oid"/>
+    <Attribute id="cls2u#att32u" name="attribute32" type="string" db:column="attribute32"/>
+  </Class>
+  <Class id="cls3n" name="Class 3" duration="persistent" gr:x="645" gr:y="210" attributeOrder="cls3n#att33n cls3n#att34n cls3n#att35n cls3n#att36n cls3n#att37n" db:database="db1" db:table="class_3">
+    <Attribute id="cls3n#att33n" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="cls3n#att37n" name="attribute37" type="string" db:column="attribute37"/>
+    <Attribute id="cls3n#att36n" name="attribute36" type="string" db:column="attribute36"/>
+    <Attribute id="cls3n#att35n" name="attribute35" type="string" db:column="attribute35"/>
+    <Attribute id="cls3n#att34n" name="attribute34" type="string" db:column="attribute34"/>
   </Class>
 </DomainModel>
