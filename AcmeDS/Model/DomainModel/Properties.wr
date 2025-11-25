@@ -120,8 +120,7 @@
       <db:JoinColumn attribute="pkg1#ent1#att1" name="category_oid"/>
     </AssociationRole2>
   </Association>
-  <db:Database id="db1" url="jdbc:mysql://localhost:3306/AcmeDB?serverTimezone=Europe/Rome" username="root" password="root" name="AcmeDB" sampleURL="jdbc:mysql://host:port/database" type="MySQL 5">
-  </db:Database>
+  <db:Database id="db1" url="jdbc:mysql://localhost:3306/AcmeDB?serverTimezone=Europe/Rome" username="root" password="root" name="AcmeDB" sampleURL="jdbc:mysql://host:port/database" type="MySQL 5"/>
   <Package id="pkg1" name="Product" gr:x="-245" gr:y="195" gr:colorOnlyOnEntity="false" gr:hide="false">
     <Class id="pkg1#ent7" name="Image" duration="persistent" gr:x="220" gr:y="465" attributeOrder="pkg1#ent7#att35 pkg1#ent7#att36 pkg1#ent7#att37 pkg1#ent7#att12 pkg1#ent7#att17" gr:hideAttributes="false" db:database="db1" db:table="image">
       <Attribute name="oid" id="pkg1#ent7#att35" type="integer" key="true" db:column="oid"/>
@@ -191,7 +190,6 @@
     <ActionService definition="tlads0#adf1ja" method="read" hasAuthUser="true"/>
     <ActionService definition="tlads0#adf2ja" method="read" hasAuthUser="true"/>
     <ActionService definition="tlads0#adf3ja" method="read" hasAuthUser="true" roles="anonymous_user"/>
-    <ActionService definition="tlads0#ada2ja" method="create" hasAuthUser="true"/>
     <ActionService definition="tlads0#ad2ja" method="delete" hasAuthUser="true"/>
     <ActionService definition="tlads0#adf4ja" method="read" hasAuthUser="true"/>
     <ActionService definition="tlads0#ad1ja" method="update" hasAuthUser="true"/>
