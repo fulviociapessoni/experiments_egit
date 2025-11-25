@@ -13,4 +13,5 @@
     <Role id="rl1ja" name="adm"/>
   </Roles>
   <Property id="testprop4836" name="DefaultServerLogLevel" value="DEBUG"/>
+  <Property id="prop1n" name="Property 1"/>
 </WebProject>
