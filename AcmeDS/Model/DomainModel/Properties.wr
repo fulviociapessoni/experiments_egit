@@ -585,7 +585,7 @@
     <Attribute id="cls3n#att33n" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls3n#att37n" name="attribute37" type="string" db:column="attribute37"/>
     <Attribute id="cls3n#att36n" name="attribute36" type="string" db:column="attribute36"/>
-    <Attribute id="cls3n#att35n" name="attribute35" type="string" db:column="attribute35"/>
+    <Attribute id="cls3n#att35n" name="attribute35" type="integer" db:column="attribute35"/>
     <Attribute id="cls3n#att34n" name="attribute34" type="string" db:column="attribute34"/>
   </Class>
 </DomainModel>
