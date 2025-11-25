@@ -581,11 +581,12 @@
     <Attribute id="cls2u#att31u" name="oid" key="true" type="integer" db:column="oid"/>
     <Attribute id="cls2u#att32u" name="attribute32" type="string" db:column="attribute32"/>
   </Class>
-  <Class id="cls3n" name="Class 3" duration="persistent" gr:x="645" gr:y="210" attributeOrder="cls3n#att33n cls3n#att34n cls3n#att35n cls3n#att36n cls3n#att37n" db:database="db1" db:table="class_3">
+  <Class id="cls3n" name="Class 3" duration="persistent" gr:x="645" gr:y="210" attributeOrder="cls3n#att33n cls3n#att34n cls3n#att35n cls3n#att36n cls3n#att37n cls3n#att38n" db:database="db1" db:table="class_3">
     <Attribute id="cls3n#att33n" key="true" name="oid" type="integer" db:column="oid"/>
     <Attribute id="cls3n#att37n" name="attribute37" type="string" db:column="attribute37"/>
     <Attribute id="cls3n#att36n" name="attribute36" type="string" db:column="attribute36"/>
-    <Attribute id="cls3n#att35n" name="attribute35" type="integer" db:column="attribute35"/>
+    <Attribute id="cls3n#att35n" name="attribute35" type="boolean" db:column="attribute35"/>
     <Attribute id="cls3n#att34n" name="attribute34" type="string" db:column="attribute34"/>
+    <Attribute id="cls3n#att38n" name="attribute38" type="string"/>
   </Class>
 </DomainModel>
