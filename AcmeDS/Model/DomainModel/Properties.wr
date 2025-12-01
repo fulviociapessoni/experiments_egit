@@ -574,7 +574,7 @@
   </srs:Resources>
   <Class id="cls1y" name="Class 1" duration="persistent" gr:x="355" gr:y="40" attributeOrder="cls1y#att1y cls1y#att2y cls1y#att3y cls1y#att4y">
     <Attribute id="cls1y#att1y" key="true" name="oid" type="integer"/>
-    <Attribute id="cls1y#att2y" name="attribute2" type="string"/>
+    <Attribute id="cls1y#att2y" name="attribute2" type="integer"/>
     <Attribute id="cls1y#att3y" name="attribute3" type="string"/>
     <Attribute id="cls1y#att4y" name="attribute4" type="string"/>
   </Class>
